@@ -14,10 +14,10 @@ public class App {
 
         /// Update the sum for each line until it runs out
         /// To do so, scan each line until no more digits exist
-        Scanner integerScanner = new Scanner(System.in);
+        Scanner digitScanner = new Scanner(System.in);
         Pattern digitPattern = Pattern.compile("\\d");
         
-        for (Integer lineIndex = 1; integerScanner.hasNextLine(); 
+        for (Integer lineIndex = 1; digitScanner.hasNextLine(); 
             lineIndex += 1)
         {
             /// Buffer each digit match
@@ -26,7 +26,7 @@ public class App {
             /// Capture first digit
             Integer leftmostDigit = null;
 
-            lineMatch = integerScanner.findInLine(digitPattern);
+            lineMatch = digitScanner.findInLine(digitPattern);
             if (lineMatch != null)
             {
                 leftmostDigit 
@@ -51,9 +51,9 @@ public class App {
             /// Capture last digit past the first digit
             Integer rightmostDigit = null;
 
-            for (lineMatch = integerScanner.findInLine(digitPattern); 
+            for (lineMatch = digitScanner.findInLine(digitPattern); 
                 lineMatch != null; 
-                lineMatch = integerScanner.findInLine(digitPattern))
+                lineMatch = digitScanner.findInLine(digitPattern))
             {
                 rightmostDigit
                     = Integer.parseInt(lineMatch);
@@ -70,12 +70,12 @@ public class App {
 
             /// After processing the current line, we may carry onto the
             /// next one
-            integerScanner.nextLine();
+            digitScanner.nextLine();
         }
 
         /// After all lines have been scanned, we may now close the scanner
         /// and report the net sum of all the lines' calibration values 
-        integerScanner.close();
+        digitScanner.close();
 
         System.out.println
         (
